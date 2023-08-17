@@ -21,8 +21,9 @@ let UsersService = exports.UsersService = class UsersService {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
-    create(createUserDto) {
-        return `This action adds new user to database`;
+    create(user) {
+        console.log(user);
+        return this.usersRepository.save(user);
     }
     findAll() {
         return this.usersRepository.find();
@@ -33,8 +34,8 @@ let UsersService = exports.UsersService = class UsersService {
     async remove(UserID) {
         await this.usersRepository.delete(UserID);
     }
-    update(UserID, updateUserDto) {
-        return `This action updates a #${UserID} user`;
+    async update(UserID, user) {
+        await this.usersRepository.update(UserID, user);
     }
 };
 exports.UsersService = UsersService = __decorate([
