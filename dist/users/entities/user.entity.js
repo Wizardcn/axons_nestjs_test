@@ -29,10 +29,6 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'date', nullable: true }),
     __metadata("design:type", Date)
 ], User.prototype, "DateOfBirth", void 0);
-__decorate([
-    typeorm_1.ManyToMany,
-    __metadata("design:type", Object)
-], User.prototype, "", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)('Users')
 ], User);

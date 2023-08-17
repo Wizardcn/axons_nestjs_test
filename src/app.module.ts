@@ -5,7 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity';
-import { CoursesModule } from './courses/courses.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -19,7 +19,6 @@ import { CoursesModule } from './courses/courses.module';
     synchronize: true,
   }),
     UsersModule,
-    CoursesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
