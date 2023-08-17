@@ -22,7 +22,7 @@ let UsersService = exports.UsersService = class UsersService {
         this.usersRepository = usersRepository;
     }
     create(createUserDto) {
-        return 'This action adds a new user';
+        return `This action adds new user to database`;
     }
     findAll() {
         return this.usersRepository.find();
@@ -30,11 +30,11 @@ let UsersService = exports.UsersService = class UsersService {
     findOne(UserID) {
         return this.usersRepository.findOneBy({ UserID });
     }
-    async remove(id) {
-        await this.usersRepository.delete(id);
+    async remove(UserID) {
+        await this.usersRepository.delete(UserID);
     }
-    update(id, updateUserDto) {
-        return `This action updates a #${id} user`;
+    update(UserID, updateUserDto) {
+        return `This action updates a #${UserID} user`;
     }
 };
 exports.UsersService = UsersService = __decorate([

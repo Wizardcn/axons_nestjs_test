@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 
 @Entity('Users')
 export class User {
+
   @PrimaryGeneratedColumn()
   UserID: number;
 
