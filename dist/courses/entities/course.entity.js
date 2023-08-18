@@ -9,32 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Course = void 0;
 const typeorm_1 = require("typeorm");
-const course_entity_1 = require("../../courses/entities/course.entity");
-let User = exports.User = class User {
+const user_entity_1 = require("../../users/entities/user.entity");
+let Course = exports.Course = class Course {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], User.prototype, "UserID", void 0);
+], Course.prototype, "CourseID", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 50, nullable: false }),
+    (0, typeorm_1.Column)({ type: 'varchar', length: 100, nullable: false }),
     __metadata("design:type", String)
-], User.prototype, "Username", void 0);
+], Course.prototype, "CourseName", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ length: 100, nullable: false }),
+    (0, typeorm_1.Column)({ type: 'varchar', length: 100, nullable: false }),
     __metadata("design:type", String)
-], User.prototype, "Email", void 0);
+], Course.prototype, "Instructor", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'date', nullable: true }),
-    __metadata("design:type", Date)
-], User.prototype, "DateOfBirth", void 0);
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], Course.prototype, "Description", void 0);
 __decorate([
-    (0, typeorm_1.ManyToMany)(() => course_entity_1.Course, course => course.enrollments),
+    (0, typeorm_1.ManyToMany)(() => user_entity_1.User, user => user.courses),
+    (0, typeorm_1.JoinTable)(),
     __metadata("design:type", Array)
-], User.prototype, "courses", void 0);
-exports.User = User = __decorate([
-    (0, typeorm_1.Entity)('Users')
-], User);
-//# sourceMappingURL=user.entity.js.map
+], Course.prototype, "enrollments", void 0);
+exports.Course = Course = __decorate([
+    (0, typeorm_1.Entity)('Courses')
+], Course);
+//# sourceMappingURL=course.entity.js.map

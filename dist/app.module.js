@@ -17,6 +17,8 @@ const users_module_1 = require("./users/users.module");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const user_entity_1 = require("./users/entities/user.entity");
+const course_entity_1 = require("./courses/entities/course.entity");
+const courses_module_1 = require("./courses/courses.module");
 let AppModule = exports.AppModule = class AppModule {
     constructor(dataSource) {
         this.dataSource = dataSource;
@@ -32,10 +34,11 @@ exports.AppModule = AppModule = __decorate([
                 username: 'root',
                 password: 'p@ssw0rd',
                 database: 'learning_platform_db',
-                entities: [user_entity_1.User],
+                entities: [user_entity_1.User, course_entity_1.Course],
                 synchronize: true,
             }),
             users_module_1.UsersModule,
+            courses_module_1.CoursesModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

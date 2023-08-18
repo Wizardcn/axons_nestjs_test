@@ -21,8 +21,35 @@ let UsersService = exports.UsersService = class UsersService {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
+    async onModuleInit() {
+        await this.createMockUsers();
+    }
+    async createMockUsers() {
+        const existingUserCount = await this.usersRepository.count();
+        if (existingUserCount === 0) {
+            const mockUsers = [
+                {
+                    Username: 'user1',
+                    Email: 'user1@example.com',
+                    DateOfBirth: new Date('1990-01-01'),
+                },
+                {
+                    Username: 'user2',
+                    Email: 'user2@example.com',
+                    DateOfBirth: new Date('1995-05-10'),
+                },
+                {
+                    Username: 'user3',
+                    Email: 'user3@example.com',
+                    DateOfBirth: new Date('1995-05-10'),
+                },
+            ];
+            for (const mockUser of mockUsers) {
+                await this.usersRepository.save(mockUser);
+            }
+        }
+    }
     create(user) {
-        console.log(user);
         return this.usersRepository.save(user);
     }
     findAll() {

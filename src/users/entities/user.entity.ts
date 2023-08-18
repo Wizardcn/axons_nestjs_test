@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Course } from 'src/courses/entities/course.entity';
 
 @Entity('Users')
 export class User {
@@ -14,4 +15,7 @@ export class User {
 
   @Column({ type: 'date', nullable: true })
   DateOfBirth: Date;
+
+  @ManyToMany(() => Course, course => course.enrollments)
+  courses: Course[];
 }

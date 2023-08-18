@@ -11,8 +11,41 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
+  async onModuleInit() {
+    // Create mock user data when the module is initialized (server startup)
+    await this.createMockUsers();
+  }
+  private async createMockUsers(): Promise<void> {
+    const existingUserCount = await this.usersRepository.count();
+    
+    if (existingUserCount === 0) {
+      const mockUsers: Partial<User>[] = [
+        {
+          Username: 'user1',
+          Email: 'user1@example.com',
+          DateOfBirth: new Date('1990-01-01'),
+        },
+        {
+          Username: 'user2',
+          Email: 'user2@example.com',
+          DateOfBirth: new Date('1995-05-10'),
+        },
+        {
+          Username: 'user3',
+          Email: 'user3@example.com',
+          DateOfBirth: new Date('1995-05-10'),
+        },
+      ];
+  
+      for (const mockUser of mockUsers) {
+        await this.usersRepository.save(mockUser);
+      }
+    }
+  }
+  
+  
+
   create(user: Partial<User>): Promise<User> {
-    console.log(user)
     return this.usersRepository.save(user);
   }
   
@@ -31,4 +64,12 @@ export class UsersService {
   async update(UserID: number, user: Partial<User>) {
     await this.usersRepository.update(UserID, user)
   }
+
+  // async findUserWithCourses(UserID: number): Promise<User | null> {
+  //   return this.usersRepository
+  //     .createQueryBuilder('user')
+  //     .leftJoinAndSelect('user.courses', 'course')
+  //     .where('user.UserID = :UserID', { UserID })
+  //     .getOne();
+  // }
 }

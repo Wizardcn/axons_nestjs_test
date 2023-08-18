@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity';
+import { Course } from './courses/entities/course.entity';
+import { CoursesModule } from './courses/courses.module';
 
 @Module({
   imports: [
@@ -15,10 +17,11 @@ import { User } from './users/entities/user.entity';
     username: 'root',
     password: 'p@ssw0rd',
     database: 'learning_platform_db',
-    entities: [User],
+    entities: [User, Course],
     synchronize: true,
   }),
     UsersModule,
+    CoursesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
