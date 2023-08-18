@@ -1,4 +1,4 @@
-# Job Application Test: Nest.js CRUD API
+# Nest.js CRUD API
 
 This repository contains a Nest.js project that implements a CRUD (Create, Read, Update, Delete) API
 
