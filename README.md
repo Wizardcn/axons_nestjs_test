@@ -11,6 +11,7 @@ Before you begin, ensure you have met the following requirements:
 - Docker
 
 ## API Endpoints
+API Endpoints which has service available
 - GET /users - Get a list of all users.
 - GET /users/:id - Get details of a specific user.
 - POST /users - Create a new user.
