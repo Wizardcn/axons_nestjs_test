@@ -7,7 +7,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: p@ssw0rd
       MYSQL_DATABASE: learning_platform_db
-    volumes:
-      - ./sql-scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
